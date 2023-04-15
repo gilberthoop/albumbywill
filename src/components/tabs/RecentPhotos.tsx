@@ -1,3 +1,4 @@
+import '../../assets/css/photos.css';
 import { useSelector } from 'react-redux';
 import Photo from '../Photo'
 
@@ -19,7 +20,6 @@ function RecentPhotos() {
     />
   ));
   
-
   return <div className="photo-grid">{renderedPhotos}</div>;
 }
 

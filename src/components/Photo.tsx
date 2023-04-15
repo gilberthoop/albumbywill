@@ -1,3 +1,5 @@
+import '../assets/css/photos.css';
+
 interface PhotoProps {
   imageFileName: string,
   imageFileSize: number,
@@ -5,18 +7,23 @@ interface PhotoProps {
 };
 
 function Photo({ imageFileName, imageFileSize, imageSource }: PhotoProps) {
+  const imageSizeInMB = imageFileSize / (1024 * 1024);
+  const imageSize = `${imageSizeInMB.toFixed(1)} MB`;
+
   return (
-    <div className="photo-container">
+    <div className="photo-card">
       <img
-        className="photo-container__img"
+        className="photo-card__img"
         src={imageSource}
       />
-      <div className="photo-container__title">
-        {imageFileName}
-      </div>
-      <div className="photo-container__subtitle">
-        {imageFileSize}
-      </div>
+      <p className="photo-card__caption">
+        <div className="photo-card__title">
+          {imageFileName}
+        </div>
+        <div className="photo-card__subtitle">
+          {imageSize}
+        </div>
+      </p>
     </div>
   );
 }

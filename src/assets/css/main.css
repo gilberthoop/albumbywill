@@ -8,19 +8,23 @@ body {
 }
 
 .heading {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
+
+  @media screen and (min-width: 600px) {
+    font-size: 32px;
+  }
 }
 
 .app-container {
   padding: 30px;
 
-  @media only screen and (min-width: 600px) {
-    padding: 20px 60px;
+  @media screen and (min-width: 600px) {
+    padding: 20px 40px;
   }
 
-  @media only screen and (min-width: 1200px) {
-    padding: 20px 90px;
+  @media screen and (min-width: 1200px) {
+    padding: 20px 70px;
   }
 }
 
