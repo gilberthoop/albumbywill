@@ -9,18 +9,6 @@ interface PhotoData {
   }
 
 function RecentPhotos() {
-  // const { data } = useSelector((state) => state.photos)
-
-  // const renderedPhotos = data.map((photo) => (
-  //   <Photo
-  //     key={photo.id}
-  //     imageFileName={photo.filename}
-  //     imageFileSize={photo.sizeInBytes}
-  //     imageSource={photo.url}
-  //   />
-  // ));
-
-  // Typescript
   const { data } = useSelector((state: { photos: { data: PhotoData[] } }) => state.photos);
   const renderedPhotos = data.map((photo: PhotoData) => (
     <Photo
