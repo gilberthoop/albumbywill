@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { Action } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { fetchPhotos, RootState } from './store';
+import RecentPhotos from './components/RecentPhotos';
 
 function App() {
+  // Load the photos data on app render by dispatching the thunk fetchPhotos function
+  const dispatch: ThunkDispatch<RootState, unknown, Action> = useDispatch();
+  const { isLoading, error } = useSelector((state: RootState) => state.photos);
+
+  useEffect(() => {
+    dispatch(fetchPhotos());
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error fetching photos.</div>
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container grid">
+      Album
+      <RecentPhotos />
     </div>
   );
-}
+}; 
 
 export default App;
