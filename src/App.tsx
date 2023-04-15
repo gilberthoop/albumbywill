@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
+import { Route, Routes } from "react-router-dom"
 import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { fetchPhotos, RootState } from './store';
-import RecentPhotos from './components/RecentPhotos';
+import RecentPhotos from './components/tabs/RecentPhotos';
+import NavBar from './components/navigation/NavBar';
 
 function App() {
   // Load the photos data on app render by dispatching the thunk fetchPhotos function
@@ -23,9 +25,16 @@ function App() {
   }
 
   return (
-    <div className="app-container grid">
-      Album
-      <RecentPhotos />
+    <div className="app-container">
+      <h1 className="heading">Photos</h1>
+      <section className="app-section">
+        <NavBar />
+        <div className="tab-container">
+          <Routes>
+            <Route path="/" element={<RecentPhotos />} />
+          </Routes>
+        </div>
+      </section>
     </div>
   );
 }; 

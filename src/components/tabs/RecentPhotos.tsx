@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Photo from './Photo'
+import Photo from '../Photo'
 
 interface PhotoData {
   id: number;
