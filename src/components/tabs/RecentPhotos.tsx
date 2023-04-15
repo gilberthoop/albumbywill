@@ -3,11 +3,7 @@ import { useSelector } from 'react-redux';
 import Photo from '../Photo'
 
 interface PhotoData {
-  id: number;
-  filename: string;
-  sizeInBytes: number;
-  url: string;
-  createdAt: string;
+  [key: string]: any;
 }
 
 function RecentPhotos() {
@@ -18,9 +14,7 @@ function RecentPhotos() {
   const renderedPhotos = recentPhotos.map((photo: PhotoData) => (
     <Photo
       key={photo.id}
-      imageFileName={photo.filename}
-      imageFileSize={photo.sizeInBytes}
-      imageSource={photo.url}
+      photo={photo}
     />
   ));
   
