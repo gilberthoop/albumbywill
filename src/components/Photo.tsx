@@ -16,14 +16,14 @@ function Photo({ imageFileName, imageFileSize, imageSource }: PhotoProps) {
         className="photo-card__img"
         src={imageSource}
       />
-      <p className="photo-card__caption">
+      <div className="photo-card__caption">
         <div className="photo-card__title">
           {imageFileName}
         </div>
         <div className="photo-card__subtitle">
           {imageSize}
         </div>
-      </p>
+      </div>
     </div>
   );
 }

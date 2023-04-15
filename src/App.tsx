@@ -4,8 +4,9 @@ import { Action } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { fetchPhotos, RootState } from './store';
-import RecentPhotos from './components/tabs/RecentPhotos';
 import NavBar from './components/navigation/NavBar';
+import RecentPhotos from './components/tabs/RecentPhotos';
+import FavoritePhotos from './components/tabs/FavoritePhotos';
 
 function App() {
   // Load the photos data on app render by dispatching the thunk fetchPhotos function
@@ -32,6 +33,7 @@ function App() {
         <div className="tab-container">
           <Routes>
             <Route path="/" element={<RecentPhotos />} />
+            <Route path="/favorites" element={<FavoritePhotos />} />
           </Routes>
         </div>
       </section>
