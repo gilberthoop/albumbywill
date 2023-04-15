@@ -7,11 +7,15 @@ interface PhotoData {
   filename: string;
   sizeInBytes: number;
   url: string;
+  favorited: boolean;
 }
 
-function RecentPhotos() {
+function FavoritePhotos() {
+  // Render only the favorite photos
   const { data } = useSelector((state: { photos: { data: PhotoData[] } }) => state.photos);
-  const renderedPhotos = data.map((photo: PhotoData) => (
+  const favoritePhotos = data.filter(photo => photo.favorited)
+
+  const renderedPhotos = favoritePhotos.map((photo: PhotoData) => (
     <Photo
       key={photo.id}
       imageFileName={photo.filename}
@@ -19,8 +23,8 @@ function RecentPhotos() {
       imageSource={photo.url}
     />
   ));
-  
+
   return <div className="photo-grid">{renderedPhotos}</div>;
 }
 
-export default RecentPhotos;
+export default FavoritePhotos;

@@ -39,7 +39,7 @@
 .photo-card__caption {
   text-align: center;
   word-wrap: break-word;
-  margin: 7px 0;
+  margin-top: 12px;
   font-size: 14px;
 
   @media screen and (min-width: 600px) {
