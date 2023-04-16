@@ -2,13 +2,13 @@ import '../assets/css/ui-elements.css';
 import Photo from './Photo';
 
 // Define interface for photo object
-interface Photo {
+interface PhotoData {
   [key: string]: any;
 }
 
 // Define interface for props passed to PhotoDetails component
 interface PhotoProp {
-  photo: Photo;
+  photo: PhotoData;
 }
 
 // Define interface for photo dimensions
@@ -59,8 +59,8 @@ function PhotoDetails({ photo }: PhotoProp) {
         <hr />
         {
           labels.map((label, index) => (
-            <div>
-              <div className="photo-info__label" key={index}>
+            <div key={index}>
+              <div className="photo-info__label">
                 <p>{label.title}</p>
                 <p>{label.value}</p>
               </div>
