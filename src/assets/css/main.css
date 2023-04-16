@@ -7,31 +7,54 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.heading {
-  font-size: 20px;
-  font-weight: bold;
-
-  @media screen and (min-width: 600px) {
-    font-size: 32px;
-  }
-}
-
 .app-container {
-  padding: 30px;
+  display: flex;
+  flex-direction: column-reverse;
 
   @media screen and (min-width: 600px) {
-    padding: 20px 40px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    padding: 20px 70px;
+    flex-direction: row;
   }
 }
 
 .app-section {
-  padding: 5px 0 50px;
+  width: 100%;
 }
 
-.tab-container {
-  margin: 30px 0;
+.app-section--padded {
+  background-color: rgba(198, 222, 245, 0.2);
+  padding: 0 30px;
+
+  @media screen and (min-width: 1000px) {
+    padding: 0 50px;
+  }
+}
+
+.app-section--narrow {
+  width: 100%;
+  padding: 30px;
+
+  @media screen and (min-width: 600px) {
+    width: 350px;
+    border-left: 1px solid #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
+  }
+
+  @media screen and (min-width: 1000px) {
+    width: 500px;
+  }
+}
+
+.app-heading {
+  padding-top: 40px;
+  padding-bottom: 25px;
+}
+
+.app-heading h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+
+  @media screen and (min-width: 600px) {
+    font-size: 32px;
+  }
 }
