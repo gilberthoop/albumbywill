@@ -2,6 +2,7 @@ import '../../assets/css/photos.css';
 import { useSelector } from 'react-redux';
 import Photo from '../Photo'
 
+// Define interface for photo object
 interface PhotoData {
   [key: string]: any;
 }
@@ -15,6 +16,7 @@ function FavoritePhotos() {
     <Photo
       key={photo.id}
       photo={photo}
+      narrowCaption={false}
     />
   ));
 

@@ -2,8 +2,9 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import '../../assets/css/nav.css';
 
 function NavBar() {
+  // Render the navigation bar with two links using the CustomLink component
   return (
-    <div>
+    <section className="nav-container">
       <nav className="nav">
         <ul>
           <CustomLink to="/">Recently Added</CustomLink>
@@ -11,10 +12,11 @@ function NavBar() {
         </ul>
       </nav>
       <hr className="nav__underline" />
-    </div>
+    </section>
   )
 }
 
+// Define the CustomLinkProps interface, which specifies the props that the CustomLink component can accept
 interface CustomLinkProps {
   to: string
   children: React.ReactNode

@@ -1,3 +1,7 @@
+.nav-container {
+  padding-top: 30px;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
