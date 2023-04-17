@@ -37,6 +37,10 @@
   }
 }
 
+.photo-card__img--selected {
+  outline: 4px double rgb(68, 0, 255);
+}
+
 .photo-card__label {
   display: block;
 }

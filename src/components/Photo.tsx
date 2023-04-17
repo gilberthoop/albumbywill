@@ -1,5 +1,5 @@
 import '../assets/css/photos.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectPhoto } from '../store';
 import { PhotoData } from '../modules/types';
 
@@ -10,6 +10,11 @@ interface PhotoProp {
 }
 
 function Photo({ photo, narrowCaption  }: PhotoProp) {
+  // Determine selected photo to be highlighted and apply outline style.
+  const selectedPhoto = useSelector((state: PhotoData) => state.selectedPhoto)
+  const isSelected = selectedPhoto && selectedPhoto.id === photo.id;
+  const cardImgClassName = `photo-card__img ${isSelected ? 'photo-card__img--selected' : ''}`;
+
   // Calculate the image size and format in MB
   const imageSizeInMB = photo.sizeInBytes / (1024 * 1024);
   const imageSize = `${imageSizeInMB.toFixed(1)} MB`;
@@ -33,7 +38,7 @@ function Photo({ photo, narrowCaption  }: PhotoProp) {
   return (
     <section className="photo-card" onClick={handlePhotoClick}>
       <img
-        className="photo-card__img"
+        className={cardImgClassName}
         src={photo.url}
         alt={photo.description}
       />
