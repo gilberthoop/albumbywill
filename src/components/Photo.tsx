@@ -1,7 +1,6 @@
 import '../assets/css/photos.css';
 import { useDispatch } from 'react-redux';
 import { selectPhoto } from '../store';
-import HeartIcon from './HeartIcon';
 
 // Define interface for photo object
 interface PhotoData {
@@ -51,7 +50,6 @@ function Photo({ photo, narrowCaption  }: PhotoProp) {
             {imageSize}
           </div>
         </section>
-        { narrowCaption ? <HeartIcon /> : null }
       </section>
     </section>
   );
