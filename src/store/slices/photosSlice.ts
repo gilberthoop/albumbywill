@@ -10,6 +10,8 @@ interface PhotosState {
 /**
  * Watch for action types made by the 'thunk',
  * in which case is the fetching of photos data.
+ * Define a removePhotoById reducer to remove a photo.
+ * Define a updateFavorites reducer to update the favorites in the photos state.
  */
 const photosSlice = createSlice({
   name: 'photos',
@@ -21,6 +23,12 @@ const photosSlice = createSlice({
   reducers: {
     removePhotoById(state, action) {
       state.data = state.data.filter(photo => photo.id !== action.payload)
+    },
+    updateFavorites(state, action) {
+      const { id, favorited } = action.payload;
+      state.data = state.data.map(photo =>
+        photo.id === id ? { ...photo, favorited } : photo
+      );
     }
   },
   extraReducers(builder) {
@@ -41,5 +49,5 @@ const photosSlice = createSlice({
   }
 });
 
-export const { removePhotoById } = photosSlice.actions;
+export const { removePhotoById, updateFavorites } = photosSlice.actions;
 export const photosReducer = photosSlice.reducer;

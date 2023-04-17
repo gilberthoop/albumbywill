@@ -58,7 +58,7 @@
 
 .photo-card__caption--narrow {
   flex-direction: row;
-  width: 220px;
+  width: 82%;
 }
 
 .photo-card__title {

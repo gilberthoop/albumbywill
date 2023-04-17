@@ -2,6 +2,7 @@ import '../assets/css/ui-elements.css';
 import { useDispatch } from 'react-redux';
 import { removePhotoById, removePhoto } from '../store';
 import Photo from './Photo';
+import HeartIcon from './HeartIcon';
 
 // Define interface for photo object
 interface PhotoData {
@@ -71,6 +72,7 @@ function PhotoDetails({ photo }: PhotoProp) {
   return (
     <section className="photo-details">
       <Photo photo={photo} narrowCaption={true} />
+      <HeartIcon />
       <section className="photo-info">
         <h3>Information</h3>
         <hr />
