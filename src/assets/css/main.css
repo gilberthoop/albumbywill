@@ -31,16 +31,17 @@ body {
 
 .app-section--narrow {
   width: 100%;
-  padding: 30px;
+  padding: 25px;
 
   @media screen and (min-width: 600px) {
-    width: 350px;
+    width: 650px;
     border-left: 1px solid #fff;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
   }
 
   @media screen and (min-width: 1000px) {
     width: 500px;
+    padding: 30px;
   }
 }
 
