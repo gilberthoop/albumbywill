@@ -1,28 +1,13 @@
 import '../assets/css/ui-elements.css';
 import { useDispatch } from 'react-redux';
 import { removePhotoById, removePhoto } from '../store';
+import { PhotoData, Dimensions, Label } from '../modules/types';
 import Photo from './Photo';
 import HeartIcon from './HeartIcon';
-
-// Define interface for photo object
-interface PhotoData {
-  [key: string]: any;
-}
 
 // Define interface for props passed to PhotoDetails component
 interface PhotoProp {
   photo: PhotoData;
-}
-
-// Define interface for photo dimensions
-interface Dimensions {
-  height: number;
-  width: number;
-}
-
-interface Label {
-  title: string;
-  value: string;
 }
 
 /**

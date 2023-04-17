@@ -2,11 +2,7 @@ import '../assets/css/ui-elements.css';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { markAsFavorite, updateFavorites } from '../store';
-
-// Define interface for photo object
-interface PhotoData {
-  [key: string]: any;
-}
+import { PhotoData } from '../modules/types';
 
 function HeartIcon() {
   /**
