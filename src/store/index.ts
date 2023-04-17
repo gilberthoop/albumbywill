@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import { photosReducer, removePhotoById } from './slices/photosSlice';
-import { selectedPhotoReducer, selectPhoto, removePhoto } from './slices/selectedPhotoSlice';
+import { photosReducer, removePhotoById, updateFavorites } from './slices/photosSlice';
+import { selectedPhotoReducer, selectPhoto, removePhoto, markAsFavorite } from './slices/selectedPhotoSlice';
 import { fetchPhotos } from './thunks/fetchPhotos';
 
 /**
@@ -23,4 +23,4 @@ export const store = configureStore({
  */
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export { fetchPhotos, selectPhoto, removePhotoById, removePhoto };
+export { fetchPhotos, selectPhoto, removePhotoById, removePhoto, updateFavorites, markAsFavorite };
