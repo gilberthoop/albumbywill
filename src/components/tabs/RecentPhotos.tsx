@@ -1,11 +1,8 @@
 import '../../assets/css/photos.css';
 import { useSelector } from 'react-redux';
+import { PhotoData } from '../../modules/types';
 import Photo from '../Photo'
 
-// Define interface for photo object
-interface PhotoData {
-  [key: string]: any;
-}
 
 function RecentPhotos() {
   // Render photos sorted by the most recent

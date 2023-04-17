@@ -1,11 +1,7 @@
 import '../assets/css/photos.css';
 import { useDispatch } from 'react-redux';
 import { selectPhoto } from '../store';
-
-// Define interface for photo object
-interface PhotoData {
-  [key: string]: any;
-}
+import { PhotoData } from '../modules/types';
 
 // Define interface for props passed to PhotoDetails component
 interface PhotoProp {
