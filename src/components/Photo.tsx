@@ -1,6 +1,6 @@
 import '../assets/css/photos.css';
 import { useDispatch } from 'react-redux';
-import { selectPhoto, resetSelectedPhoto } from '../store';
+import { selectPhoto } from '../store';
 import HeartIcon from './HeartIcon';
 
 // Define interface for photo object
@@ -20,13 +20,10 @@ function Photo({ photo, narrowCaption  }: PhotoProp) {
   const imageSize = `${imageSizeInMB.toFixed(1)} MB`;
 
   /**
-   * Dispatch the resetSelectedPhoto and selectPhoto actions.
-   * resetSelectedPhoto makes sure that the state starts with a fresh value
-   * before it gets reassigned a new value using selectPhoto.
+   * Dispatch the selectPhoto action to get data about the selected photo.
    */ 
   const dispatch = useDispatch();
   const handlePhotoClick = () => {
-    dispatch(resetSelectedPhoto());
     dispatch(selectPhoto(photo));
   };
 
@@ -37,7 +34,7 @@ function Photo({ photo, narrowCaption  }: PhotoProp) {
   const captionClassName = narrowCaption
     ? 'photo-card__caption photo-card__caption--narrow'
     : 'photo-card__caption';
-  
+
   return (
     <section className="photo-card" onClick={handlePhotoClick}>
       <img

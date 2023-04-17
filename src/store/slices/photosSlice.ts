@@ -18,7 +18,11 @@ const photosSlice = createSlice({
     isLoading: true,
     error: null
   } as PhotosState,
-  reducers: {},
+  reducers: {
+    removePhotoById(state, action) {
+      state.data = state.data.filter(photo => photo.id !== action.payload)
+    }
+  },
   extraReducers(builder) {
     // Update state object indicating the process of data loading.
     builder.addCase(fetchPhotos.pending, (state) => {
@@ -37,4 +41,5 @@ const photosSlice = createSlice({
   }
 });
 
+export const { removePhotoById } = photosSlice.actions;
 export const photosReducer = photosSlice.reducer;

@@ -1,4 +1,6 @@
 import '../assets/css/ui-elements.css';
+import { useDispatch } from 'react-redux';
+import { removePhotoById, removePhoto } from '../store';
 import Photo from './Photo';
 
 // Define interface for photo object
@@ -15,6 +17,11 @@ interface PhotoProp {
 interface Dimensions {
   height: number;
   width: number;
+}
+
+interface Label {
+  title: string;
+  value: string;
 }
 
 /**
@@ -40,7 +47,7 @@ const formatDimensions = ({ height, width }: Dimensions) => {
 function PhotoDetails({ photo }: PhotoProp) {
   // Define the labels (with values) for photo details
   const { uploadedBy, createdAt, updatedAt, dimensions, resolution, description } = photo;
-  const labels = [
+  const labels: Label[] = [
     { title: 'Uploaded by', value: uploadedBy },
     { title: 'Created' , value: formatDate(createdAt) },
     { title: 'Last modified', value: formatDate(updatedAt) },
@@ -49,7 +56,17 @@ function PhotoDetails({ photo }: PhotoProp) {
   ];
 
   // Set photo description to 'Not available' if it is undefined or null
-  const photoDescription = description ?? 'Not available.';
+  const photoDescription: string = description ?? 'Not available.';
+
+  /**
+   * Handle click event on the button for deleting the photo
+   * both from the list and the sidebar.
+   */
+  const dispatch = useDispatch();
+  const deletePhoto = (photo: PhotoData) => {
+    dispatch(removePhotoById(photo.id));
+    dispatch(removePhoto());
+  }
 
   return (
     <section className="photo-details">
@@ -75,7 +92,9 @@ function PhotoDetails({ photo }: PhotoProp) {
         <p>{photoDescription}</p>
       </section>
 
-      <button className="fluid-btn">Delete</button>
+      <button className="fluid-btn" onClick={() => deletePhoto(photo)}>
+        Delete
+      </button>
     </section>
   );
 }

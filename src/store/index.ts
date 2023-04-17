@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
-import { photosReducer } from './slices/photosSlice';
-import { selectedPhotoReducer, selectPhoto, resetSelectedPhoto } from './slices/selectedPhotoSlice';
+import { photosReducer, removePhotoById } from './slices/photosSlice';
+import { selectedPhotoReducer, selectPhoto, removePhoto } from './slices/selectedPhotoSlice';
 import { fetchPhotos } from './thunks/fetchPhotos';
 
 /**
@@ -19,8 +19,8 @@ export const store = configureStore({
 /**
  * Define the RootState type, which represents the type of the entire state of the Redux store
  * Define the AppDispatch type, which represents the type of the dispatch function for the Redux store
- * Export the fetchPhotos, selectPhoto, and resetSelectedPhoto functions
+ * Export the actions.
  */
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export { fetchPhotos, selectPhoto, resetSelectedPhoto };
+export { fetchPhotos, selectPhoto, removePhotoById, removePhoto };
