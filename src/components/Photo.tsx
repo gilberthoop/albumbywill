@@ -21,10 +21,12 @@ function Photo({ photo, narrowCaption  }: PhotoProp) {
 
   /**
    * Dispatch the selectPhoto action to get data about the selected photo.
+   * Scroll up window to focus view on the details.
    */ 
   const dispatch = useDispatch();
   const handlePhotoClick = () => {
     dispatch(selectPhoto(photo));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Determine the class name of the label and caption sections based on the narrowCaption prop
