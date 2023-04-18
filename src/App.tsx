@@ -22,11 +22,15 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <section className="loading-section">Loading...</section>;
   }
 
   if (error) {
-    return <div>Error fetching photos.</div>
+    return (
+      <section className="error-section">
+        Error fetching photos. Please try again later.
+      </section>
+    );
   }
 
   // Render details about the photo that is currently selected.
