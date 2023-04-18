@@ -14,3 +14,10 @@ export interface Label {
   title: string;
   value: string;
 }
+
+// Define interface for PhotoState
+export interface PhotosState {
+  data: any[];
+  isLoading: boolean;
+  error: any | null;
+}
