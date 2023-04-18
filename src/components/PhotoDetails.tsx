@@ -10,26 +10,6 @@ interface PhotoProp {
   photo: PhotoData;
 }
 
-/**
- * Formats a date string according to the mockup.
- * @param {string} dateString - The date string to be formatted.
- * @returns {string} The formatted date string.
- */
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
-}
-
-/**
- * Formats the dimensions of the photo according to the mockup.
- * @param {Dimensions} dimensions - The dimensions of the photo.
- * @returns {string} The formatted dimensions string.
- */
-const formatDimensions = ({ height, width }: Dimensions) => {
-  return `${height} x ${width}`;
-}
-
 function PhotoDetails({ photo }: PhotoProp) {
   // Define the labels (with values) for photo details
   const { uploadedBy, createdAt, updatedAt, dimensions, resolution, description } = photo;
@@ -84,6 +64,26 @@ function PhotoDetails({ photo }: PhotoProp) {
       </button>
     </section>
   );
+}
+
+/**
+ * Formats a date string according to the mockup.
+ * @param {string} dateString - The date string to be formatted.
+ * @returns {string} The formatted date string.
+ */
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
+  return date.toLocaleDateString('en-US', options);
+}
+
+/**
+ * Formats the dimensions of the photo according to the mockup.
+ * @param {Dimensions} dimensions - The dimensions of the photo.
+ * @returns {string} The formatted dimensions string.
+ */
+const formatDimensions = ({ height, width }: Dimensions) => {
+  return `${height} x ${width}`;
 }
 
 export default PhotoDetails;

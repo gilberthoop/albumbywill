@@ -16,7 +16,7 @@ function FavoritePhotos() {
     />
   ));
 
-  return <div className="photo-grid">{renderedPhotos}</div>;
+  return <div data-testid="photo-grid" className="photo-grid">{renderedPhotos}</div>;
 }
 
 export default FavoritePhotos;

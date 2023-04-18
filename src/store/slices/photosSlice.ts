@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchPhotos } from '../thunks/fetchPhotos';
-
-interface PhotosState {
-  data: any[];
-  isLoading: boolean;
-  error: any | null;
-}
+import { PhotosState } from '../../modules/types';
 
 /**
  * Watch for action types made by the 'thunk',
