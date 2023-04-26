@@ -23,7 +23,9 @@ describe('RecentPhotos', () => {
       </Provider>
     );
 
+    // eslint-disable-next-line testing-library/prefer-screen-queries
     const photoGrid = getByTestId('photo-grid');
+    // eslint-disable-next-line testing-library/no-node-access
     expect(photoGrid.children.length).toBe(2);
   })
 })

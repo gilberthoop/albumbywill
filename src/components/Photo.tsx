@@ -1,6 +1,6 @@
 import '../assets/css/photos.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPhoto } from '../store';
+import { selectPhoto, RootState } from '../store';
 import { PhotoData } from '../modules/types';
 
 // Define interface for props passed to PhotoDetails component
@@ -9,9 +9,9 @@ interface PhotoProp {
   narrowCaption: boolean;
 }
 
-function Photo({ photo, narrowCaption  }: PhotoProp) {
+const Photo: React.FC<PhotoProp> = ({ photo, narrowCaption }) => {
   // Determine selected photo to be highlighted and apply outline style.
-  const selectedPhoto = useSelector((state: PhotoData) => state.selectedPhoto)
+  const selectedPhoto = useSelector((state: RootState) => state.selectedPhoto)
   const isSelected = selectedPhoto && selectedPhoto.id === photo.id;
   const cardImgClassName = `photo-card__img ${isSelected ? 'photo-card__img--selected' : ''}`;
 

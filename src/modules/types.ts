@@ -1,10 +1,34 @@
 // Define interface for photo object
 export interface PhotoData {
-  [key: string]: any;
+  id: string;
+  url: string;
+  filename: string;
+  description: string;
+  uploadedBy: string;
+  createdAt: string;
+  updatedAt: string;
+  dimensions: Dimensions;
+  resolution: Resolution;
+  sizeInBytes: number;
+  sharedWith: SharedWith[],
+  favorited: boolean;
 };
+
+// Define interface for SharedWith
+export interface SharedWith {
+  id: string;
+  name: string;
+  avatar: string;
+}
 
 // Define interface for photo dimensions
 export interface Dimensions {
+  height: number;
+  width: number;
+};
+
+// Define interface for photo resolution
+export interface Resolution {
   height: number;
   width: number;
 };
@@ -13,11 +37,11 @@ export interface Dimensions {
 export interface Label {
   title: string;
   value: string;
-}
+};
 
-// Define interface for PhotoState
+// Define interface for the photos as PhotosState
 export interface PhotosState {
-  data: any[];
+  data: PhotoData[];
   isLoading: boolean;
-  error: any | null;
-}
+  error: string | null;
+};

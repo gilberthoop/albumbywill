@@ -1,8 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit';
-import thunkMiddleware from 'redux-thunk';
-import { photosReducer, removePhotoById, updateFavorites } from './slices/photosSlice';
-import { selectedPhotoReducer, selectPhoto, removePhoto, markAsFavorite } from './slices/selectedPhotoSlice';
-import { fetchPhotos } from './thunks/fetchPhotos';
+import { configureStore } from "@reduxjs/toolkit";
+import thunkMiddleware from "redux-thunk";
+import {
+  photosReducer,
+  removePhotoById,
+  updateFavoritesById,
+} from "./slices/photosSlice";
+import {
+  selectedPhotoReducer,
+  selectPhoto,
+  markAsFavorite,
+  removePhoto,
+} from "./slices/selectedPhotoSlice";
+import { fetchPhotos } from "./thunks/fetchPhotos";
 
 /**
  * Configure the Redux store with the photosReducer and selectedPhotoReducer
@@ -11,7 +20,7 @@ import { fetchPhotos } from './thunks/fetchPhotos';
 export const store = configureStore({
   reducer: {
     photos: photosReducer,
-    selectedPhoto: selectedPhotoReducer
+    selectedPhoto: selectedPhotoReducer,
   },
   middleware: [thunkMiddleware],
 });
@@ -23,4 +32,11 @@ export const store = configureStore({
  */
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export { fetchPhotos, selectPhoto, removePhotoById, removePhoto, updateFavorites, markAsFavorite };
+export {
+  fetchPhotos,
+  selectPhoto,
+  removePhotoById,
+  updateFavoritesById,
+  markAsFavorite,
+  removePhoto,
+};

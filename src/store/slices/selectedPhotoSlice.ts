@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import { PhotoData } from "../../modules/types";
+import { SelectPhoto } from "../../modules/actionsTypes";
 
 /**
  * Create a slice for the currently selected photo named 'selectedPhotoSlice'.
@@ -8,20 +10,21 @@ import { createSlice } from '@reduxjs/toolkit';
  * Define a removePhoto reducer.
  */
 const selectedPhotoSlice = createSlice({
-  name: 'selectedPhoto',
-  initialState: {},
+  name: "selectedPhoto",
+  initialState: {} as PhotoData,
   reducers: {
-    selectPhoto(state, action) {
+    selectPhoto(state: PhotoData, action: SelectPhoto) {
       return action.payload;
     },
-    removePhoto() {
-      return {};
+    markAsFavorite(state: PhotoData) {
+      return { ...state, favorited: !state.favorited };
     },
-    markAsFavorite(state, action) {
-      return { ...state, favorited: action.payload };
-    }
-  }
+    removePhoto() {
+      return {} as PhotoData;
+    },
+  },
 });
 
-export const { selectPhoto, removePhoto, markAsFavorite } = selectedPhotoSlice.actions;
+export const { selectPhoto, markAsFavorite, removePhoto } =
+  selectedPhotoSlice.actions;
 export const selectedPhotoReducer = selectedPhotoSlice.reducer;

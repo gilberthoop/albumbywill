@@ -10,7 +10,7 @@ interface PhotoProp {
   photo: PhotoData;
 }
 
-function PhotoDetails({ photo }: PhotoProp) {
+const PhotoDetails: React.FC<PhotoProp> = ({ photo }) => {
   // Define the labels (with values) for photo details
   const { uploadedBy, createdAt, updatedAt, dimensions, resolution, description } = photo;
   const labels: Label[] = [
