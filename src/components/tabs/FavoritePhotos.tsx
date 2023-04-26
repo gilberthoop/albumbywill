@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { PhotoData } from '../../modules/types';
 import Photo from '../Photo'
 
-function FavoritePhotos() {
+const FavoritePhotos: React.FC = () => {
   // Render only the favorite photos
   const { data } = useSelector((state: { photos: { data: PhotoData[] } }) => state.photos);
   const favoritePhotos = data.filter(photo => photo.favorited)

@@ -1,15 +1,15 @@
 import '../assets/css/ui-elements.css';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { markAsFavorite, updateFavorites } from '../store';
+import { markAsFavorite, updateFavoritesById, RootState } from '../store';
 import { PhotoData } from '../modules/types';
 
-function HeartIcon() {
+const HeartIcon: React.FC = () => {
   /**
    * Determine if the photo is currently favorited
    * so that it can be used for proper toggling and styling.
    */
-  const photoData = useSelector((state: PhotoData) => state.selectedPhoto)
+  const photoData = useSelector((state: RootState) => state.selectedPhoto)
 
   /**
    * Handle click events on the heart icon
@@ -20,9 +20,8 @@ function HeartIcon() {
    */
   const dispatch = useDispatch();
   const handleAddToFavorites = (photo: PhotoData) => {
-    const updatedPhotoFavorited = { ...photo, favorited: !photo.favorited };
-    dispatch(markAsFavorite(updatedPhotoFavorited.favorited));
-    dispatch(updateFavorites(updatedPhotoFavorited));
+    dispatch(markAsFavorite());
+    dispatch(updateFavoritesById(photo.id));
   }
 
   // Render the heart icon, using AiOutlineHeart when the icon is not filled and AiFillHeart when it is filled

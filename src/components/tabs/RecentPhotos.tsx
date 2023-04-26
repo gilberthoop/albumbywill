@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 import { PhotoData } from '../../modules/types';
 import Photo from '../Photo'
 
-
-function RecentPhotos() {
+const RecentPhotos: React.FC = () => {
   // Render photos sorted by the most recent
   const { data } = useSelector((state: { photos: { data: PhotoData[] } }) => state.photos);
   const recentPhotos = data.slice().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());

@@ -9,7 +9,7 @@ import RecentPhotos from './components/tabs/RecentPhotos';
 import FavoritePhotos from './components/tabs/FavoritePhotos';
 import PhotoDetails from './components/PhotoDetails';
 
-function App() {
+const App: React.FC = () => {
   // Load the photos data on app render by dispatching the thunk fetchPhotos function
   const dispatch: ThunkDispatch<RootState, unknown, Action> = useDispatch();
   const { isLoading, error } = useSelector((state: RootState) => state.photos);

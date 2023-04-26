@@ -1,8 +1,27 @@
-import { configureStore, EnhancedStore } from '@reduxjs/toolkit';
-import { photosReducer, removePhotoById, updateFavorites } from '../photosSlice';
-import { PhotosState } from '../../../modules/types';
+import { configureStore, EnhancedStore } from "@reduxjs/toolkit";
+import {
+  photosReducer,
+  removePhotoById,
+  updateFavoritesById,
+} from "../photosSlice";
+import { PhotosState } from "../../../modules/types";
 
-describe('photosSlice', () => {
+const mockPhoto = {
+  id: "1",
+  url: "https://example.com/photo.jpg",
+  description: "A beautiful photo",
+  filename: "photo.jpg",
+  sizeInBytes: 1000000,
+  uploadedBy: "John Doe",
+  createdAt: "2017-09-21T17:16:34.629Z",
+  updatedAt: "2022-09-21T17:16:34.629Z",
+  dimensions: { height: 100, width: 200 },
+  resolution: { height: 72, width: 72 },
+  favorited: false,
+  sharedWith: [],
+};
+
+describe("photosSlice", () => {
   let store: EnhancedStore<{ photos: PhotosState }>;
 
   beforeAll(() => {
@@ -11,24 +30,24 @@ describe('photosSlice', () => {
     });
   });
 
-  it('should remove a photo by id', () => {
+  it("should remove a photo by id", () => {
     const initialState: PhotosState = {
-      data: [{ id: 1, url: 'https://example.com/image1.png', favorited: false }],
+      data: [mockPhoto],
       isLoading: false,
       error: null,
     };
-    const action = removePhotoById(1);
+    const action = removePhotoById("1");
     const state = photosReducer(initialState, action);
     expect(state.data).toHaveLength(0);
   });
 
-  it('should update a photo favorite status', () => {
+  it("should update a photo favorite status", () => {
     const initialState: PhotosState = {
-      data: [{ id: 1, url: 'https://example.com/image1.png', favorited: false }],
+      data: [mockPhoto],
       isLoading: false,
       error: null,
     };
-    const action = updateFavorites({ id: 1, favorited: true });
+    const action = updateFavoritesById("1");
     const state = photosReducer(initialState, action);
     expect(state.data[0].favorited).toBe(true);
   });

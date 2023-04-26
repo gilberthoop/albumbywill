@@ -1,7 +1,7 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 import '../../assets/css/nav.css';
 
-function NavBar() {
+const NavBar: React.FC = () => {
   // Render the navigation bar with two links using the CustomLink component
   return (
     <section className="nav-container">
@@ -20,10 +20,9 @@ function NavBar() {
 interface CustomLinkProps {
   to: string
   children: React.ReactNode
-  [key: string]: unknown
 }
 
-function CustomLink({ to, children, ...props }: CustomLinkProps) {
+const CustomLink: React.FC<CustomLinkProps> = ({ to, children, ...props }) => {
   const resolvedPath = useResolvedPath(to)
   const isActive = useMatch({ path: resolvedPath.pathname, end: true })
 
