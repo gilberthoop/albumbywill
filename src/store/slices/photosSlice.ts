@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchPhotos } from "../thunks/fetchPhotos";
 import { PhotosState } from "../../modules/types";
-import {
-  RemovePhotoById,
-  UpdateFavoritesById,
-} from "../../modules/actionsTypes";
 
 /**
  * Watch for action types made by the 'thunk',
@@ -20,10 +16,10 @@ const photosSlice = createSlice({
     error: null,
   } as PhotosState,
   reducers: {
-    removePhotoById(state: PhotosState, action: RemovePhotoById) {
+    removePhotoById(state: PhotosState, action: PayloadAction<string>) {
       state.data = state.data.filter((photo) => photo.id !== action.payload);
     },
-    updateFavoritesById(state: PhotosState, action: UpdateFavoritesById) {
+    updateFavoritesById(state: PhotosState, action: PayloadAction<string>) {
       state.data = state.data.map((photo) => {
         if (photo.id === action.payload) {
           return { ...photo, favorited: !photo.favorited };

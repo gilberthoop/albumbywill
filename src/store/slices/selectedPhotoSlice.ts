@@ -1,6 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PhotoData } from "../../modules/types";
-import { SelectPhoto } from "../../modules/actionsTypes";
 
 /**
  * Create a slice for the currently selected photo named 'selectedPhotoSlice'.
@@ -13,7 +12,7 @@ const selectedPhotoSlice = createSlice({
   name: "selectedPhoto",
   initialState: {} as PhotoData,
   reducers: {
-    selectPhoto(state: PhotoData, action: SelectPhoto) {
+    selectPhoto(state: PhotoData, action: PayloadAction<PhotoData>) {
       return action.payload;
     },
     markAsFavorite(state: PhotoData) {
