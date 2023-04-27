@@ -1,7 +1,7 @@
-import '../assets/css/photos.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectPhoto, RootState } from '../store';
-import { PhotoData } from '../modules/types';
+import "../assets/css/photos.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectPhoto, RootState } from "../store";
+import { PhotoData } from "../modules/types";
 
 // Define interface for props passed to PhotoDetails component
 interface PhotoProp {
@@ -11,9 +11,11 @@ interface PhotoProp {
 
 const Photo: React.FC<PhotoProp> = ({ photo, narrowCaption }) => {
   // Determine selected photo to be highlighted and apply outline style.
-  const selectedPhoto = useSelector((state: RootState) => state.selectedPhoto)
+  const selectedPhoto = useSelector((state: RootState) => state.selectedPhoto);
   const isSelected = selectedPhoto && selectedPhoto.id === photo.id;
-  const cardImgClassName = `photo-card__img ${isSelected ? 'photo-card__img--selected' : ''}`;
+  const cardImgClassName = `photo-card__img ${
+    isSelected ? "photo-card__img--selected" : ""
+  }`;
 
   // Calculate the image size and format in MB
   const imageSizeInMB = photo.sizeInBytes / (1024 * 1024);
@@ -22,20 +24,20 @@ const Photo: React.FC<PhotoProp> = ({ photo, narrowCaption }) => {
   /**
    * Dispatch the selectPhoto action to get data about the selected photo.
    * Scroll up window to focus view on the details.
-   */ 
+   */
   const dispatch = useDispatch();
   const handlePhotoClick = () => {
     dispatch(selectPhoto(photo));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   // Determine the class name of the label and caption sections based on the narrowCaption prop
   const labelClassName = narrowCaption
-    ? 'photo-card__label photo-card__label--narrow'
-    : 'photo-card__label';
+    ? "photo-card__label photo-card__label--narrow"
+    : "photo-card__label";
   const captionClassName = narrowCaption
-    ? 'photo-card__caption photo-card__caption--narrow'
-    : 'photo-card__caption';
+    ? "photo-card__caption photo-card__caption--narrow"
+    : "photo-card__caption";
 
   return (
     <section className="photo-card" onClick={handlePhotoClick}>
@@ -46,16 +48,12 @@ const Photo: React.FC<PhotoProp> = ({ photo, narrowCaption }) => {
       />
       <section className={labelClassName}>
         <section className={captionClassName}>
-          <div className="photo-card__title">
-            {photo.filename}
-          </div>
-          <div className="photo-card__subtitle">
-            {imageSize}
-          </div>
+          <div className="photo-card__title">{photo.filename}</div>
+          <div className="photo-card__subtitle">{imageSize}</div>
         </section>
       </section>
     </section>
   );
-}
+};
 
 export default Photo;

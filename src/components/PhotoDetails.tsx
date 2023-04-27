@@ -1,9 +1,9 @@
-import '../assets/css/ui-elements.css';
-import { useDispatch } from 'react-redux';
-import { removePhotoById, removePhoto } from '../store';
-import { PhotoData, Dimensions, Label } from '../modules/types';
-import Photo from './Photo';
-import HeartIcon from './HeartIcon';
+import "../assets/css/ui-elements.css";
+import { useDispatch } from "react-redux";
+import { removePhotoById, removePhoto } from "../store";
+import { PhotoData, Dimensions, Label } from "../modules/types";
+import Photo from "./Photo";
+import HeartIcon from "./HeartIcon";
 
 // Define interface for props passed to PhotoDetails component
 interface PhotoProp {
@@ -12,17 +12,24 @@ interface PhotoProp {
 
 const PhotoDetails: React.FC<PhotoProp> = ({ photo }) => {
   // Define the labels (with values) for photo details
-  const { uploadedBy, createdAt, updatedAt, dimensions, resolution, description } = photo;
+  const {
+    uploadedBy,
+    createdAt,
+    updatedAt,
+    dimensions,
+    resolution,
+    description,
+  } = photo;
   const labels: Label[] = [
-    { title: 'Uploaded by', value: uploadedBy },
-    { title: 'Created' , value: formatDate(createdAt) },
-    { title: 'Last modified', value: formatDate(updatedAt) },
-    { title: 'Dimensions', value: formatDimensions(dimensions) },
-    { title: 'Resolution', value: formatDimensions(resolution) }
+    { title: "Uploaded by", value: uploadedBy },
+    { title: "Created", value: formatDate(createdAt) },
+    { title: "Last modified", value: formatDate(updatedAt) },
+    { title: "Dimensions", value: formatDimensions(dimensions) },
+    { title: "Resolution", value: formatDimensions(resolution) },
   ];
 
   // Set photo description to 'Not available' if it is undefined or null
-  const photoDescription: string = description ?? 'Not available.';
+  const photoDescription: string = description ?? "Not available.";
 
   /**
    * Handle click event on the button for deleting the photo
@@ -32,7 +39,7 @@ const PhotoDetails: React.FC<PhotoProp> = ({ photo }) => {
   const deletePhoto = (photo: PhotoData) => {
     dispatch(removePhotoById(photo.id));
     dispatch(removePhoto());
-  }
+  };
 
   return (
     <section className="photo-details">
@@ -41,19 +48,17 @@ const PhotoDetails: React.FC<PhotoProp> = ({ photo }) => {
       <section className="photo-info">
         <h3>Information</h3>
         <hr />
-        {
-          labels.map((label, index) => (
-            <div key={index}>
-              <div className="photo-info__label">
-                <p>{label.title}</p>
-                <p>{label.value}</p>
-              </div>
-              <hr />
+        {labels.map((label, index) => (
+          <div key={index}>
+            <div className="photo-info__label">
+              <p>{label.title}</p>
+              <p>{label.value}</p>
             </div>
-          ))
-        }
+            <hr />
+          </div>
+        ))}
       </section>
-  
+
       <section className="photo-description">
         <h3>Description</h3>
         <p>{photoDescription}</p>
@@ -64,7 +69,7 @@ const PhotoDetails: React.FC<PhotoProp> = ({ photo }) => {
       </button>
     </section>
   );
-}
+};
 
 /**
  * Formats a date string according to the mockup.
@@ -73,9 +78,13 @@ const PhotoDetails: React.FC<PhotoProp> = ({ photo }) => {
  */
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
-  const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
-}
+  const options: Intl.DateTimeFormatOptions = {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  };
+  return date.toLocaleDateString("en-US", options);
+};
 
 /**
  * Formats the dimensions of the photo according to the mockup.
@@ -84,6 +93,6 @@ const formatDate = (dateString: string) => {
  */
 const formatDimensions = ({ height, width }: Dimensions) => {
   return `${height} x ${width}`;
-}
+};
 
 export default PhotoDetails;
